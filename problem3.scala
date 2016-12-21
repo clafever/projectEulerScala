@@ -1,8 +1,6 @@
 // The prime factors of 13195 are 5, 7, 13 and 29.
 // What is the largest prime factor of the number 600851475143 ?
 
-
-
 // take an argument from the command line scala problem3.scala 600851475143
 var test_int = BigInt(args(0))
 
