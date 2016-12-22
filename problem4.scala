@@ -11,7 +11,7 @@ println(answer)
 
 
 /*
-//more intuitively:
+// more intuitively:
 val threeDigitNumbers = (100 to 999).toList
 val products = threeDigitNumbers.flatMap(i => (i to 999).map(n => n*i))
 val palindromes = products.filter((n:Int) => n.toString == n.toString.reverse)
