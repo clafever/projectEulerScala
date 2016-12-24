@@ -29,8 +29,6 @@ def findProduct(b: String): Long = {
 	def loop(nb: String, cval: Long): Long = {
 		val s = nb.slice(0,13) //take a slice of 13
 		val nval: Long = s.map(_.asDigit).map(_.toLong).reduceLeft((x,y) => x * y)
-		println("n:" + nval)
-		println("c:" + cval)
 		if (s.length < 13) cval
 		else if (nval >= cval) loop(nb.tail, nval)
 		else loop(nb.tail, cval)
