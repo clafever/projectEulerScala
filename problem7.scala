@@ -1,4 +1,4 @@
-//doesnt work yet
+//doesnt work yet !!! 
 
 def primeTest(n: Int): Boolean = {
 	if (n < 2) false

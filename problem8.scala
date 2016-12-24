@@ -1,7 +1,6 @@
 // still not wrapping in boilerplate! 
-// NOTE: both methods need an isDigit method to take out 
-// the /n or whitespace chars from blocking it out
-// seems the optimal 13-tuple lies across one
+/* NOTE: both methods need an isDigit method to take out 
+the junk chars at line break: seems max is on one */
 
 var block = """73167176531330624919225119674426574742355349194934
 96983520312774506326239578318016984801869478851843
@@ -35,10 +34,8 @@ def findProduct(b: String): Long = {
 	}
 	loop(b.filter(_.isDigit), 0) //take block and set current value to 0
 }
-
 println(findProduct(block))
 
 // idiomatic solution from online suggestions (with some mods)
 val r = block.filter(_.isDigit).map(_.asDigit).map(_.toLong).sliding(13).map(_.product).max
-
 println(r)

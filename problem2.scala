@@ -1,3 +1,6 @@
+// not proud of this but it works
+// could make more elegant with composed functions or closure
+
 def fib(f1: Int, f2: Int, lim: Int): Int = {
 	var f = f1 + f2
 	if (f2 > lim) 0
@@ -6,10 +9,3 @@ def fib(f1: Int, f2: Int, lim: Int): Int = {
 }
 
 println(fib(1,2,4000000))
-
-// kick off with 1,2,4mil
-// define a new number
-
-// stop if we hit 4 million by adding 0 to previous sum
-// if its divisible by 2 (even) then accumulate recursively
-// otherwise carry on with the new number...
