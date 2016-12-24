@@ -1,6 +1,7 @@
-// could probably re-do the positions using 
-// a .tail method passed into a reworked loop function
-// or cheat using sliding method
+// still not wrapping in boilerplate! 
+// NOTE: both methods need an isDigit method to take out 
+// the /n or whitespace chars from blocking it out
+// seems the optimal 13-tuple lies across one
 
 var block = """73167176531330624919225119674426574742355349194934
 96983520312774506326239578318016984801869478851843
@@ -23,14 +24,23 @@ var block = """73167176531330624919225119674426574742355349194934
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450"""
 
-def findProduct(b: String): Int = {
-	def loop(nb: String, cval: Int, pos: Int): Int = {
-		var nval = block.slice(pos, pos + 5).map(_.asDigit).reduceLeft((x,y) => x * y)
-		if (nb.slice(pos, pos+5).length < 5) cval
-		else if (nval > cval) loop(b, nval, pos + 1)
-		else loop(b, cval, pos + 1)
+// my non-idiomatic solution but at least it's recursive.
+def findProduct(b: String): Long = {
+	def loop(nb: String, cval: Long): Long = {
+		val s = nb.slice(0,13) //take a slice of 13
+		val nval: Long = s.map(_.asDigit).map(_.toLong).reduceLeft((x,y) => x * y)
+		println("n:" + nval)
+		println("c:" + cval)
+		if (s.length < 13) cval
+		else if (nval >= cval) loop(nb.tail, nval)
+		else loop(nb.tail, cval)
 	}
-	loop(b, 0, 0)
+	loop(b.filter(_.isDigit), 0) //take block and set current value to 0
 }
 
 println(findProduct(block))
+
+// idiomatic solution from online suggestions (with some mods)
+val r = block.filter(_.isDigit).map(_.asDigit).map(_.toLong).sliding(13).map(_.product).max
+
+println(r)
